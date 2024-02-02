@@ -1,0 +1,10 @@
+from bs4 import BeautifulSoup
+from selenium import webdriver 
+import os
+
+driver=webdriver.Chrome(service=Service('chromedriver.exe')) 
+r= driver.get('https://www.thewhiskyexchange.com/c/35/japanese-whisky') 
+raw=driver.page_source
+soup=BeautifulSoup(raw, 'html.parser')
+productlist = soup.find_all('li',class_='product-grid__item')
+print(len(productlist))
